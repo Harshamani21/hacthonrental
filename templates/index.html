@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    box-sizing: border-box;
+    outline: none; border:none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+}
+:root{
+    --yellow:#f9d806;
+    --light-yellow:#ffee80;
+    --black:#130f40;
+    --light-color:#666;
+    --box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+    --border:.1rem solid rgba(0,0,0,.1);
+}
+.banner {
+    width: 100%;
+    height: 600px;
+      background: linear-gradient(rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.70)), url('/static/U3r9pn.jpeg');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+
+}
+h4 {
+    width: 25px;
+}
+
+.navbar {
+    width: 85%;
+    margin: auto;
+    padding: 35px 0;
+    display: flex;
+    align-items: center;
+    bottom: 10px;
+    justify-content: space-between;
+}
+
+.logo {
+    width: 30px;
+    height: 30px;
+}
+
+.navbar ul li {
+    list-style: none;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: aliceblue;
+    text-transform: uppercase;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.navbar ul li::after {
+    content: ' ';
+    height: 3px;
+    width: 0;
+    background: aquamarine;
+    position: absolute;
+    left: 0;
+    bottom: -10px;
+    transition: 0.5s;
+}
+
+.navbar ul li:hover:after {
+    width: 100%;
+
+}
+
+.banner .card{
+    background-color: rgb(44, 79, 68);
+    color: aliceblue;
+    position: relative;
+    left: 1040px;
+    top: 50px;
+    height: 330px;
+}
+
+#pick {
+    padding: 10px;
+    position: relative;
+    top: 80px;
+}
+
+#drop {
+    padding: 10px;
+    position: relative;
+    top: 90px;
+}
+#output{
+    position: relative;
+    top: 10px;
+    left: 5px;
+}
+.banner .btn {
+    position: relative;
+    top: 120px;
+    left: 25px;
+    width: 150px;
+    height: 40px;
+    color: #fff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: none;
+    margin: 20px;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.5s;
+    transition-property: box-shadow;
+}
+
+.banner .btn-primary {
+    background: #257557;
+    box-shadow: 0 0 15px #28b280;
+}
+
+.banner .btn-primary:hover {
+    box-shadow: 0 0 30px #28b280;
+    background: #28b280;
+}
+
+.logo2 {
+    position: relative;
+    width: 200px;
+    height: 100px;
+}
+
+span {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.section-head {
+    margin-bottom: 60px;
+}
+
+.section-head h4 {
+    position: relative;
+    padding: 0;
+    color: #257557;
+    line-height: 1;
+    letter-spacing: 0.3px;
+    font-size: 34px;
+    font-weight: 700;
+    text-align: center;
+    text-transform: none;
+    margin-bottom: 30px;
+    width: 100%;
+}
+
+.section-head h4::before {
+    content: ' ';
+    width: 60px;
+    height: 3px;
+    background: #257557;
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.section-head p {
+    color: #2f2f2f;
+    font-size: 16px;
+    line-height: 28px;
+    text-align: center;
+}
+
+.item {
+    background: #fff;
+    text-align: center;
+    padding: 30px 25px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.07);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border: 5px solid rgba(0, 0, 0, 0.07);
+    -webkit-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+    height: 200px;
+}
+
+.item:hover {
+    background: #257557;
+    box-shadow: 0 8px 20px 0 rgba(0, 0, 0, 0.2);
+    -webkit-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+    color: aliceblue;
+}
+
+.item h6 {
+    font-weight: bolder;
+}
+section h1{
+    margin: 50px 0 !important;
+}
+#faqs{
+    background: #fff;
+    padding: 30px 25px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.07);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border: 5px solid rgba(0, 0, 0, 0.07);
+    -webkit-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+    height: 100%;
+}
+
+
+/*contact*/
+.contact .row{
+    display: flex;
+    flex-wrap: wrap;
+    gap:4.5rem;
+}
+
+.contact .row .map{
+    flex:1 1 42rem;
+    width: 100%;
+    padding:2rem;
+    box-shadow: var(--box-shadow);
+    border:var(--border);
+    border-radius: .5rem .5rem;
+    position: relative;
+    left: 20px;
+}
+
+.contact .row form{
+    padding:2rem 2rem;
+    flex:1 1 42rem;
+    box-shadow: var(--box-shadow);
+    border:var(--border);
+    text-align: center;
+    border-radius: .3rem .3rem;
+    position: relative;
+    right: 20px;
+}
+
+.contact .row form h3{
+    font-size: 3rem;
+    color:var(--black);
+    padding-bottom: 1rem;
+}
+
+.contact .row form .box{
+    width:100%;
+    border-radius: .5rem;
+    padding:0.5rem 0.5rem;
+    font-size: 1rem;
+    text-transform: none;
+    border:var(--border);
+    margin:.7rem 0;
+}
+
+.contact .row form textarea{
+    height:7rem;
+    resize: none;
+}
+.heading{
+    padding-bottom: 2rem;
+    text-align: center;
+    font-size: 3rem;
+    color:var(--black);
+}
+
+.heading span{
+    position: relative;
+    z-index: 0;
+}
+
+.heading span::before{
+    content: '';
+    position: absolute;
+    bottom:1rem; left:0;
+    height: 100%;
+    width: 100%;
+    background: var(--dark-green);
+    z-index: -1;
+    clip-path: polygon(0 90%, 100% 80%, 100% 100%, 0% 100%);
+}
+.contact .btn{
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding:.5rem 2rem;
+    background:#28b280;
+    color:var(--black);
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: .5rem;
+    font-weight: 300;
+    text-align: center;
+    position: relative;
+}
+
+.btn:hover{
+    background:#257557;
+    color: #fff;
+}
+
+/*reviews*/
+footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    background: rgb(255, 255, 255);
+    padding: 30px 25px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.07);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    border: 5px solid rgba(0, 0, 0, 0.07);
+    -webkit-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+    position: relative;
+    width: 1200px;
+    left: 100px;
+    top: 50px;
+  }
+img{
+    size: 10px;
+  }
+.rating{
+    position: relative;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+.rating input{
+    display: none;
+  }
+.rating label h4{
+    position: relative;
+    left: 20%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: black;
+  }
+.rating label{
+    position: relative;
+    width: 0;
+    height: 128px;
+    cursor: pointer;
+    transition: 0.5s;
+    filter: grayscale(1);
+    text-align: center;
+    opacity: 0;
+  }
+  .rating:hover label{
+    width: 160px;
+    opacity: 0.2;
+    color: #257557;
+  }
+  .rating input:hover + label,
+  .rating input:checked + label{
+    filter: grayscale(0);
+    opacity: 1;
+    width: 160px;
+  }
+  .rating label h4{
+    font-size: 24px;
+    padding-top: 10px;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(-50px) scale(0);
+    transition: 0.5s;
+  }
+  .rating input:hover + label h4,
+  .rating input:checked + label h4{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  .text{
+    position: absolute;
+    top: -80px;
+    left: -20%;
+    transform: translateY(-10%);
+    color: rgb(9, 11, 13);
+    width: 500px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 30px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+<div class="banner">
+    <div class="navbar">
+        <img src="C:\Users\harsh\OneDrive\Desktop\2nd year\web dev project\U3r9pn.jpg" class="logo">
+        <ul>
+            <li><a href="#home">home</a></li>
+            <li><a href="#contact">contact us</a></li>
+            <li><a href="#book">reviews</a></li>
+            <li><a href="#services">services</a></li>
+            <li><a href="#">login</a></li>
+        </ul>
+    </div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <form id="pick" >
+                <div class="input-group date" id="datepicker">
+                    <input type="text" placeholder="pickup-date" id="date1" class="form-control">
+                        <span class="input-group-append">
+                            <span class="input-group-text bg-white">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </span>
+                    </div>
+            </form>
+            <form id="drop" >
+                <div class="input-group date" id="datepicker2">
+                    <input type="text" placeholder="dropping-date" id="date2" class="form-control">
+                        <span class="input-group-append">
+                            <span class="input-group-text bg-white">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </span>
+                    </div>
+            </form>
+            <form action="#" method="POST">
+            <button class="btn btn-primary" type="submit" id="submit" onclick="handleSubmit()" >button</button>
+             <div id="output">Select the dates to get started</div>
+              </div>
+            </form>
+        </div>
+      </div>
+</div>
+ <div class="pt-5 pb-5" id="services">
+    <div class="container">
+        <div class="row">
+            <div class="section-head col-sm-12">
+            <h4><span>Services</span></h4>
+            <p>The largest and the financial capital city of Andhra Pradesh,
+                 Vizag or Vishakhapatnam is the home to only natural harbour 
+                 on the east coast of India and also houses the oldest shipyard.
+                  Also known to be The City of Destiny and Jewel of the East .</p>
+                </div>
+            <div class="col-lg-3 col-sm-5">
+                <div class="item">
+                    <span class="icon feature_box_col_one"><i class="fa fa-car"></i></span>
+                    <h6>HOME DELIVERY & RETURN</h6>
+                    <p> On-time doorstep service, at your preferred location and time.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-5">
+                <div class="item">
+                    <span class="icon feature_box_col_one"><i class="fa fa-gear"></i></span>
+                    <h6>WELL MAINTAINED CARS</h6>
+                    <p>
+                        Regular service and maintenance , inspected before and after each trip.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-5">
+                <div class="item">
+                    <span class="icon feature_box_col_one"><i class="fa fa-inr"></i></span>
+                    <h6>NO SECURITY DEPOSIT</h6>
+                    <p>No security deposit needed,driving licence and adhaaar card (or Pan card)  is only required 
+
+
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-5">
+                <div class="item">
+                    <span class="icon feature_box_col_two"><i class="fa fa-dashboard"></i></span>
+                    <h6>FLEXIBLE PRICE PLANS</h6>
+                    <p>Choose 'Unlimited kms' or 'limited kms' and for also 12hrs and 24hrs according to your convinience
+                        
+            </div>
+            
+        </div>
+    </div>
+</div>
+<section>
+    <div class="container" id="faqs">
+        <h1>FAQS</h1>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                  <strong> Is there a speed limit?</strong>
+                </button>
+              </h2>
+              <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  we allows up to 125 km/hr. However it is 80 km/hr in a few cities where some cars might be equipped with speed governors 
+                  as per government directives. we strictly advises to follow local speed limits.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  <strong>Can I extend/ cancel/ modify?</strong>
+                </button>
+              </h2>
+              <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  Yes, extensions are possible subject to availability & charges. Cancellations & modifications will attract nominal charges as per our policy.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  <strong>Booking criteria & documents?</strong>
+                </button>
+              </h2>
+              <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  Min. 21 years old, have valid original government ID (Aadhar, Passport, or PAN only) and a valid driving licence for 'Light Motor Vehicles', which is min. 1 year old at the time of starting the trip.
+                </div>
+              </div>
+            </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingfour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapsefour" aria-expanded="false" aria-controls="collapsefour">
+                  <strong>Is there a "Kilometres limit" to how much I can drive?</strong>
+                </button>
+              </h2>
+              <div id="collapsefour" class="accordion-collapse collapse" aria-labelledby="headingfour" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                  This depends on the pricing plan that you select. If you go for the 'Unlimited kms' pricing plans (available only without fuel, and only for bookings whose duration is more than 72 hours), there is absolutely no limit to the kilometres that you can drive, and you have complete flexibility of driving the car as much as you want. Revv it up! Other pricing plans have a "Kilometres limit",
+                   which varies based on the plan selected. You can still drive beyond the kilometres limit,
+                    but the additional kilometres clocked will attract an additional charge.
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</section>
+<section class="contact" id="contact">
+
+  <h1 class="heading"><span>contact</span> us</h1>
+
+  <div class="row">
+      <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d243208.17099389914!2d83.1225036735497!3d17.738622503053154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a39431389e6973f%3A0x92d9c20395498468!2sVisakhapatnam%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1668100227532!5m2!n1sen!2si" allowfullscreen="" loading="lazy"></iframe>
+
+      <form action="">
+          <h3>Get in touch</h3>
+          <input type="text" placeholder="your name" class="box">
+          <input type="email" placeholder="your email" class="box">
+          <input type="tel" placeholder="subject" class="box">
+          <textarea placeholder="your message" class="box" cols="30" rows="10"></textarea>
+          <input type="submit" value="send message" class="btn">
+      </form>
+
+  </div>
+
+</section>
+<footer>
+  <div class="rating">
+    <input onclick="" type="radio" name="star" id="star1" checked>
+    <label for="star1">
+      <img src='/static/5.jpeg' alt="">
+      <h4>Loved IT</h4>
+    </label>
+    <input type="radio" name="star" id="star2">
+    <label for="star2">
+      <img src='/static/4.jpeg' alt="">
+      <h4>Liked IT</h4>
+    </label>
+    <input type="radio" name="star" id="star3">
+    <label for="star3">
+      <img src='/static/3.jpeg' alt="">
+      <h4>IT's Ok</h4>
+    </label>
+    <input type="radio" name="star" id="star4">
+    <label for="star4">
+      <img src='/static/2.jpeg' alt="">
+      <h4>Disliked IT</h4>
+    </label>
+    <input type="radio" name="star" id="star5">
+    <label for="star5">
+      <img src='/static/1.jpeg' alt="">
+      <h4>Hated IT</h4>
+    </label>
+    <h2 class="text">Do you like our service ?</h2>
+  </div>
+</footer>
+    
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $(function() {
+        $('#datepicker').datepicker();
+    });
+    $(function(){
+        $('#datepicker2').datepicker();
+    });
+</script>
+
+<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+
+<script>
+  //Declaring and initializing variables
+let submit = document.getElementById("submit");
+let output = document.getElementById("output");
+
+submit.addEventListener("mouseover", () => {
+  //Create a Date object from input value
+  let date1 = new Date(document.getElementById("date1").value);
+  let date2 = new Date(document.getElementById("date2").value);
+
+  //Check if the input dates are valid
+  //If valid calculate the difference
+  if (date1.getTime() && date2.getTime()) {
+    //Calculate difference in time using getTime function
+    //getTime calculates number of years since January 1,1970
+    let timeDifference = date2.getTime() - date1.getTime();
+
+    //Since this value is in milliseconds we need to convert it into days
+    //We want the difference to be a non-negative number. Hence we use Math.abs()
+    let dayDifference = Math.abs(timeDifference / (1000 * 3600 * 24));
+    if(dayDifference>0 && dayDifference < 30){
+    output.innerHTML = `Duration is  <span>${dayDifference}</span> days`;
+  }
+  else{
+    output.innerHTML = " duration should be 1-30 days";
+  }
+}
+
+  //Else display that the input is valid
+  else {
+    output.innerHTML = "please select the both dates";
+  }
+});
+
+
+function handleSubmit(){
+  var date1 = document.getElementsById('date1').value;
+  var date2 = document.getElementById('date2').value;
+
+  sessionStorage.setItem('NAME',date1);
+  sessionStorage.setItem('SURNAME',date2);
+
+  return;
+}
+
+
+</script>
+</body>
+</html>
